@@ -882,3 +882,23 @@ def _free_space_check(hdulist, dirname=None):
             hdu._close()
 
         raise OSError(error_message + str(exc))
+
+
+def _extract_number(value, default):
+    """
+    Attempts to extract an integer number from the given value. If the
+    extraction fails, the value of the 'default' argument is returned.
+    """
+
+    try:
+        # Try to convert value directly to integer, i.e. 768.0 or "94"
+        return int(value)
+    except ValueError:
+        # Strings containing float values ("94.0") need to be converted
+        # to floats first
+        try:
+            return int(float(value))
+        except (TypeError, ValueError):
+            return default
+    except TypeError:
+        return default

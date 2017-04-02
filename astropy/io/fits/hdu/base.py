@@ -1000,8 +1000,9 @@ class _ValidHDU(_BaseHDU, _Verify):
         if naxis < 1000:
             for ax in range(3, naxis + 3):
                 self.req_cards('NAXIS' + str(ax - 2), ax,
-                               lambda v: (_is_int(v) and v >= 0), 1, option,
-                               errs)
+                               lambda v: (_is_int(v) and v >= 0),
+                               _extract_number(v, default=1),
+                               option, errs)
 
             # Remove NAXISj cards where j is not in range 1, naxis inclusive.
             for keyword in self._header:
