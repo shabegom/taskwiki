@@ -168,6 +168,7 @@ class SelectedTasks(object):
         for vimwikitask in self.tasks:
             cache().remove_line(vimwikitask['line_number'])
             print(u"Task \"{0}\" deleted.".format(vimwikitask['description']))
+
             cache().buffer.push()
             self.save_action('delete')
 
@@ -268,8 +269,8 @@ class Mappings(object):
         inside_vimwiki_link = all([
             '[[' in line,
             ']]' in line,
-            column >= line.find('[['),
-            column <= line.find(']]') + 1
+            column >= line.find(')['),
+            column <= line.find(']') + 1
         ])
 
         if inside_vimwiki_link:
