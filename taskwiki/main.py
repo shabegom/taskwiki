@@ -168,10 +168,9 @@ class SelectedTasks(object):
         for vimwikitask in self.tasks:
             cache().remove_line(vimwikitask['line_number'])
             print(u"Task \"{0}\" deleted.".format(vimwikitask['description']))
-            WholeBuffer.update_from_tw()
 
-       # cache().buffer.push()
-       # self.save_action('delete')
+       cache().buffer.push()
+       self.save_action('delete')
 
     @errors.pretty_exception_handler
     def modify(self, modstring):
