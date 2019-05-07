@@ -47,7 +47,7 @@ as simple as:
 
 However, make sure your box satisfies the requirements stated above.
 
-To access documentation, run :helptags and then :help taskwiki.
+To access documentation, run :helptags taskwiki and then :help taskwiki.
 
 #### Optional enhancements
 
@@ -76,6 +76,11 @@ Taskwiki enhances simple vimwiki task lists by storing the task metadata in
 Taskwarrior. Taskwarrior uses plaintext data files as a back end, and taskwiki
 uses Taskwarrior as a back end. This allows taskwiki to leverage its powerful
 features, such as filtering, recurrent tasks, user defined attributes or hooks.
+
+*Note:* Taskwiki only handles check lists that use the asterisk `*`. All other
+lists, i.e. those written with a hyphen `-` or a pound sign `#` as well as
+ordered lists, are left alone. This allows you to define plain lists and even
+vimwiki check lists that are unrelated to Taskwarrior.
 
 ### Features
 
@@ -291,4 +296,3 @@ and consider using a virtual machine or [Xvfb](https://www.x.org/releases/X11R7.
 When `tzlocal` library can't detect your local timezone, it has to be set [explicitly](https://github.com/tbabej/taskwiki/issues/110) using the environment variable `TZ`. For example, before launching vim:
 
     export TZ="Europe/Prague"
-

@@ -42,6 +42,11 @@ Taskwarrior. Taskwarrior uses plaintext data files as a back end, and taskwiki
 uses Taskwarrior as a back end. This allows taskwiki to leverage its powerful
 features, such as filtering, recurrent tasks, user defined attributes or hooks.
 
+NOTE: Taskwiki only handles check lists that use the asterisk "*". All
+other lists, i.e. those written with a hyphen "-" or a pound sign "#" as
+well as ordered lists, are left alone. This allows you to define plain
+lists and even vimwiki check lists that are unrelated to Taskwarrior.
+
 ----------------------------------------------------------------------------
 Individual tasks
 
@@ -708,6 +713,22 @@ constructs.
     Example:
     let g:taskwiki_use_python2="yes"
 
+*taskwiki_suppress_mappings*
+        Setting this variable to a non-empty value (such as "yes") will
+        prevent taskwiki from setting up any |<Leader>|-mappings. This is
+        useful if you would rather specify your own mappings or have
+        conflicting mappings.
+
+        Example:
+        let g:taskwiki_suppress_mappings="yes"
+
+*taskwiki_maplocalleader*
+        This variable sets the |maplocalleader| to the leader which will be
+        used for all function mappings (unless |taskwiki_suppress_mappings| is
+        set). If this variable is not set, <Leader>t will be used.
+
+        Example:
+        let g:taskwiki_maplocalleader=",t"
 
 =============================================================================
 9. TROUBLESHOOTING					   *taskwiki-trouble*
