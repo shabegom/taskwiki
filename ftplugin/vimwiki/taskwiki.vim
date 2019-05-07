@@ -91,9 +91,18 @@ if !hasmapto('<Plug>VimwikiFollowLink')
 endif
 
 execute "nnoremap <silent><buffer> <CR> :" . g:taskwiki_py . "Mappings.task_info_or_vimwiki_follow_link()<CR>"
-endif
 
 " Leader-related mappings. Mostly <Leader>t + <first letter of the action>
+if !exists('g:taskwiki_suppress_mappings')
+        if exists('g:taskwiki_maplocalleader')
+                let maplocalleader = g:taskwiki_maplocalleader
+        else
+                if exists('g:mapleader')
+                        let maplocalleader = g:mapleader.'t'
+                else
+                        let maplocalleader = '\t'
+                endif
+        endif
         nnoremap <silent><buffer> <LocalLeader>a :TaskWikiAnnotate<CR>
         nnoremap <silent><buffer> <LocalLeader>bd :TaskWikiBurndownDaily<CR>
         nnoremap <silent><buffer> <LocalLeader>bw :TaskWikiBurndownWeekly<CR>
